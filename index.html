@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty of Agriculture GPA System</title>
+    <link rel="manifest" href="/manifest.json">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎓 </h1>
+        <h1>GPA Calculate System</h1>
+        <p>Faculty of Agriculture | University of Ruhuna</p>
+
+        <div class="card" id="cgpa-card">
+            <h2>Your Cumulative GPA (CGPA)</h2>
+            <h2 id="cgpa-result">0.00</h2>
+            <p>Your Honours Class is: <strong id="honours-class">N/A</strong></p>
+            <p id="cgpa-details">Based on 0 total credits and 0.00 total quality points.</p>
+            
+            <div class="chart-container">
+                <canvas id="cgpaChart"></canvas>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Select Your Program</h2>
+            <select id="program-select">
+                <option value="">-- Please choose your degree --</option>
+                <option value="ARMT">BSc Hons in Agricultural Resource Mgt & Tech (ARMT)</option>
+                <option value="ABM">BSc Hons in Agribusiness Management (ABM)</option>
+                <option value="GT">BSc Hons in Green Technology (GT)</option>
+            </select>
+            
+            <h2 class="spacer">Select Semester</h2>
+            <select id="semester-select" disabled>
+                <option value="">-- First, select a program --</option>
+                </select>
+        </div>
+
+        <div class="card" id="courses-card">
+            <h2 id="courses-header">Compulsory Courses</h2>
+            <p class="guide-text">Select your grades. <span class="gpa-comp-guide">GPA courses (green)</span> count toward your GPA. <span class="gpa-nongpa-guide">Non-GPA courses (grey)</span> are saved but do not affect your GPA.</p>
+            <div id="compulsory-list">
+                </div>
+            
+            <h2 class="spacer">Elective / Specialization Courses</h2>
+            <p class="guide-text">Use this to add your electives or 4th year specialization courses.</p>
+            <div id="elective-list">
+                </div>
+            <button id="add-elective-btn">+ Add Elective Course</button>
+        </div>
+
+        <div class="card" id="result-area">
+            <h2>Live Semester Result</h2>
+            <div class="semester-result-grid">
+                <div>
+                    <p>Your Semester GPA (SGPA)</p>
+                    <h2 id="sgpa-result">0.00</h2>
+                    <p>Based on <strong id="gpa-credits">0</strong> GPA Credits.</p>
+                </div>
+                <div>
+                    <p>Semester Grade Counts</p>
+                    <div id="grade-counts">
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>Data Management</h2>
+            <p>Your data is saved in this browser. Use these buttons to back it up.</p>
+            <div class="data-buttons">
+                <button id="export-data-btn" title="Saves all your data (for all programs) to a .json file on your computer.">Export Data</button>
+                <button id="import-data-btn" title="Loads data from a .json backup file. This will overwrite any current data.">Import Data</button>
+                <button id="reset-all-btn" title="Deletes all saved data for the *currently selected* program from this browser.">Reset All Data</button>
+            </div>
+            <input type="file" id="import-file-input" accept=".json" style="display: none;">
+        </div>
+
+        <div class="card" id="goal-seeker-card">
+            <h2>Plan Your GPA in Here 🎯</h2>
+            
+            <div class="goal-section">
+                <h3>Current Status</h3>
+                <p class="guide-text">This is your overall academic standing based on all saved semester data.</p>
+                <div class="status-grid">
+                    <div><span>Total Credits:</span> <strong id="status-total-credits">0</strong></div>
+                    <div><span>Completed:</span> <strong id="status-completed-credits">0</strong></div>
+                    <div><span>Remaining:</span> <strong id="status-remaining-credits">0</strong></div>
+                    <div><span>Current Class:</span> <strong id="status-current-class">N/A</strong></div>
+                </div>
+            </div>
+
+            <div class="goal-section">
+                <h3>Future Projections (Based on remaining credits)</h3>
+                <p class="guide-text">This calculates the average GPA you must get on *all* your remaining credits to reach your honors target.</p>
+                <ul class="projection-list">
+                    <li id="proj-max">Max Possible CGPA: <strong>0.00</strong></li>
+                    <li id="proj-first">To Get 1st Class (3.70): <strong>Need 0.00 GPA</strong></li>
+                    <li id="proj-upper">To Get 2nd Upper (3.30): <strong>Need 0.00 GPA</strong></li>
+                    <li id="proj-lower">To Get 2nd Lower (3.00): <strong>Need 0.00 GPA</strong></li>
+                </ul>
+            </div>
+
+            <div class="goal-section">
+                <h3>Custom Scenario Planner</h3>
+                <p class="guide-text">Plan your future! For example, if you think you'll get an 'A' for a 3-credit course and a 'B' for a 2-credit course, enter <strong>3</strong> in the 'A' box and <strong>2</strong> in the 'B' box, then click Calculate.</p>
+                <div class="scenario-grid" id="scenario-inputs">
+                    </div>
+                <button id="calculate-scenario-btn">Calculate Final CGPA</button>
+                <p id="scenario-result"></p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>developed by Indunil Sisirakumara</p>
+	<p>Version 1.2</p>
+	<p>All Rights Reserved</p>
+    </footer>
+
+    <script src="/app.js"></script>
+</body>
+</html>

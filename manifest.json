@@ -1,0 +1,21 @@
+{
+  "short_name": "UoR GPA",
+  "name": "Faculty of Agriculture GPA System",
+  "description": "A complete GPA calculator for ARMT, ABM, and GT programs at the University of Ruhuna.",
+  "display": "standalone",
+  "start_url": "/",
+  "background_color": "#ffffff",
+  "theme_color": "#005a2b",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}
